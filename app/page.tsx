@@ -2,11 +2,10 @@ import Image from "next/image";
 
 //import { useQuery } from '@tanstack/react-query'
 //import { skillsRequest } from '../api/home'
-//import Perfil from "@/public/next.svg"
+import Perfil from "@/public/perfil.jpg";
 //import Proyecto from '@/public/next.svg'
 //import Ecommerce from '@/public/next.svg'
 //import Github from '@/public/next.svg'
-//import Loader from '../components/Loader'
 
 
 const Home = () => {
@@ -32,31 +31,11 @@ const Home = () => {
   
 
   return (
-    <main className='font-mono text-white p-4 md:p-5' >
+    <main className='font-mono text-white p-4 md:p-5'>
 
-      <div className="hidden md:flex items-center justify-center mb-6 mt-2">
-          <div>
-            <a href='#sobre_mi' className='py-2 lg:py-3 px-4 md:px-5 lg:px-8 my-2 rounded-lg hover:bg-gradient-to-r hover:from-gray-900 hover:to-blue-950 dark:text-gray-300 dark:hover:text-white'>
-              Sobre mi
-            </a>
-            <a href='#proyectos' className='py-2 lg:py-3 px-4 md:px-5 lg:px-8 my-2 rounded-lg hover:bg-gradient-to-r hover:from-gray-900 hover:to-blue-950 dark:text-gray-300 dark:hover:text-white  '>
-              Proyectos
-            </a>
-            <a href="#skills" className='py-2 lg:py-3 px-4 md:px-5 lg:px-8 my-2 rounded-lg hover:bg-gradient-to-r hover:from-gray-900 hover:to-blue-950 dark:text-gray-300  dark:hover:text-white'>
-                Skills
-            </a>
-            <a href="#contacto" className='py-2 lg:py-3 px-2 md:px-5 lg:px-9 mx-1 rounded-lg hover:bg-gradient-to-r hover:from-gray-900 hover:to-blue-950 dark:text-gray-300  dark:hover:text-white'>
-              Contacto
-            </a>
-          <hr className="my-1 text-white w-96 mx-auto" />
-          </div>
-      </div>
-
-      <section className="py-6 lg:py-9 xl:py-0 px-4 lg:px-8 mb-20 lg:mb-36 h-full lg:h-[75vh] mx-auto bg-gradient-to-r from-gray-900 to-blue-950 rounded-xl shadow-inner shadow-gray-900  sm:flex sm:items-center sm:justify-center">
+      <section  className="py-6 lg:py-9 xl:py-1 px-4 lg:px-8 mb-20 lg:mb-36 h-full lg:h-[80vh] mx-auto bg-gradient-to-r from-gray-900 to-blue-950 rounded-xl shadow-inner shadow-gray-900  sm:flex sm:items-center sm:justify-center">
         <Image
-          src="/next.svg"
-          width={100}
-          height={100}
+          src={Perfil}
           className="block mx-auto h-56 w-56 sm:h-96 sm:w-96 object-cover rounded-xl border sm:mx-7"
           alt="Foto de perfil"
         />

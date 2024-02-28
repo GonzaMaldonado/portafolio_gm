@@ -6,7 +6,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { ExclamationCircleIcon } from '@heroicons/react/24/outline';
 //import { toast } from 'react-hot-toast'
-import Logo from '@/public/lion7.png';
+import Logo from '@/public/lion.png';
 
 
 const Login = () => {
@@ -21,7 +21,6 @@ const Login = () => {
     },
     onError: (error) => {
       toast.error("There was an error, please try to login again")
-      console.log(error);
     }
   }) */
 
@@ -37,8 +36,6 @@ const Login = () => {
                 alt="Logo de página"
             />
             <h2 className="text-center text-3xl lg:text-4xl font-bold"> Login </h2>
-          {/*loginMutation.error && <div> <p className="font-bold text-red-700" > {loginMutation.error.response.data.detail} </p> </div> 
-          */}
           <form action={dispatch} className="p-3 space-y-2 md:space-y-4">
 
               <label htmlFor="username" className="block text-sm lg:text-base font-medium">UserName</label>

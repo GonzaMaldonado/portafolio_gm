@@ -2,7 +2,6 @@
 
 import { useState } from 'react';
 import { usePathname } from 'next/navigation';
-//import { useMutation } from "@tanstack/react-query"
 //import { emailRequest } from "../api/home"
 //import { toast } from 'react-hot-toast'
 //import { FaGithub, FaLinkedin, FaInstagram } from 'react-icons/fa';

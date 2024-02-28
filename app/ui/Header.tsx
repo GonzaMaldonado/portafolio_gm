@@ -1,24 +1,23 @@
 "use client"
 
-import { Disclosure, Menu } from '@headlessui/react'
+import { Disclosure } from '@headlessui/react'
 import { Bars3Icon,  XMarkIcon } from '@heroicons/react/24/outline'
 import Link from "next/link"
 import Image from "next/image"
 
+
 const navigation = [
-  { name: 'Home', href: '/', current: true },
-  { name: 'Proyectos', href: '#proyectos', current: false },
-  { name: 'Skills', href: '#skills', current: false },
-  { name: 'Contacto', href: '#contacto', current: false },
+  { name: 'Sobre mi', href: '#sobre_mi' },
+  { name: 'Proyectos', href: '#proyectos' },
+  { name: 'Skills', href: '#skills' },
+  { name: 'Contacto', href: '#contacto' },
 ]
 
-function classNames(...classes: any[]) {
-  return classes.filter(Boolean).join(' ')
-}
 
 export default function Header() {
+  
   return (
-    <Disclosure as="nav" className="bg-gray-800">
+    <Disclosure as="nav" id="home" className="bg-gray-800 sticky top-0 right-0">
       {({ open }) => (
         <>
           <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
@@ -37,13 +36,14 @@ export default function Header() {
               </div>
               <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
                 <div className="flex flex-shrink-0 items-center">
-                  <Image
-                    src="/next.svg"
-                    width={80}
-                    height={56}
-                    className="block"
-                    alt="Logo portafolio GM"
-                  />
+                  <Link href="#home">
+                    <Image
+                      src="/logo.svg"
+                      width={65}
+                      height={30}
+                      alt="Logo portafolio GM"
+                    />
+                  </Link>
                   
                 </div>
                 <div className="hidden sm:ml-6 sm:block">
@@ -52,11 +52,7 @@ export default function Header() {
                       <Link
                         key={item.name}
                         href={item.href}
-                        className={classNames(
-                          item.current ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white',
-                          'rounded-md px-3 py-2 text-sm font-medium'
-                        )}
-                        aria-current={item.current ? 'page' : undefined}
+                        className='text-gray-400 hover:bg-gray-900 hover:text-white rounded-md px-3 py-3 mx-1 my-1 text-sm font-medium'
                       >
                         {item.name}
                       </Link>
@@ -64,22 +60,7 @@ export default function Header() {
                   </div>
                 </div>
               </div>
-              <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-
-                {/* Profile dropdown */}
-                <Menu as="div" className="relative ml-3">
-                      <Menu.Item>
-                        {({ active }) => (
-                          <a
-                            href="/"
-                            className={'text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium'}
-                          >
-                            Sign out
-                          </a>
-                        )}
-                      </Menu.Item>                
-                </Menu>
-              </div>
+              
             </div>
           </div>
 
@@ -90,11 +71,7 @@ export default function Header() {
                   key={item.name}
                   as="a"
                   href={item.href}
-                  className={classNames(
-                    item.current ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white',
-                    'block rounded-md px-3 py-2 text-base font-medium'
-                  )}
-                  aria-current={item.current ? 'page' : undefined}
+                  className='text-gray-300 hover:bg-gray-900 hover:text-white block rounded-md px-3 py-2 text-base font-medium'
                 >
                   {item.name}
                 </Disclosure.Button>

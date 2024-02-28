@@ -4,10 +4,10 @@
 // However, these types are generated automatically if you're using an ORM such as Prisma.
 export type User = {
     id: string;
-    name: string;
+    username: string;
     email: string;
     password: string;
-  };
+};
   
   
   export type Invoice = {
@@ -17,17 +17,4 @@ export type User = {
     date: string;
     status: 'pending' | 'paid';
   };
-  
-  
-  export type InvoicesTable = {
-    id: string;
-    customer_id: string;
-    name: string;
-    email: string;
-    image_url: string;
-    date: string;
-    amount: number;
-    status: 'pending' | 'paid';
-  };
-
   
