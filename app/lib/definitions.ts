@@ -9,8 +9,21 @@ export type User = {
     password: string;
 };
   
-  
-  export type Invoice = {
+export type Skill = {
+  id: string;
+  name: string;
+  image_url: string;
+};
+
+export type Project = {
+  id: string;
+  name: string;
+  image_url: string;
+  description?: string;
+  items: string;
+};
+
+export type Invoice = {
     id: string;
     customer_id: string;
     amount: number;
