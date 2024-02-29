@@ -9,7 +9,7 @@ const inter = Inter({ subsets: ["latin"] });
 export const metadata: Metadata = {
   title: {
     template: "%s | Portafolio GM",
-    default: "Home"
+    default: "Portafolio GM"
   },
   description: "Curriculum Vitae programador full stack",
 };
