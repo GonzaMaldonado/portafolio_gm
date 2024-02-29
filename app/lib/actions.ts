@@ -31,10 +31,18 @@ export async function authenticate(
 
 
 // Skills
+const FormSchemaSkill = z.object({
+  id: z.string(),
+  name: z.string(),
+  image_url: z.string(
+    {invalid_type_error: 'Please select a image_url.',}
+  ),
+});
 const SkillFormSchema = z.object({
   id: z.string(),
   name: z.string(
-    {invalid_type_error: 'Please select a name.',}
+    {invalid_type_error: 'Please select a name.',
+    required_error: "Write a name"}
   ),
   image_url: z.string(
     {invalid_type_error: 'Please select a image_url.',}
@@ -44,15 +52,14 @@ const SkillFormSchema = z.object({
 
 export type SkillState = {
   errors?: {
-    id?: string[];
     name?: string[];
     image_url?: string[];
   };
-  message?: string | null;
+  message?: null | string;
 };
 
 
-const CreateSkill = SkillFormSchema.omit({ id: true });
+const CreateSkill = FormSchemaSkill.omit({ id: true });
 const UpdateSkill = SkillFormSchema.omit({ id: true });
 
 
@@ -65,7 +72,7 @@ export async function createSkill(prevState: SkillState, formData: FormData) {
   if (!validatedFields.success) {
     return {
       errors: validatedFields.error.flatten().fieldErrors,
-      message: 'Missing Fields. Failed to Create Invoice.',
+      message: 'Missing Fields. Failed to Create Skill.',
     };
   }
 
@@ -82,8 +89,8 @@ export async function createSkill(prevState: SkillState, formData: FormData) {
     };
   }
 
-  revalidatePath('/admin/skill');
-  redirect('/admin/skill');
+  revalidatePath('/admin/skills');
+  redirect('/admin/skills');
 }
 
 
@@ -116,8 +123,8 @@ export async function updateSkill(
     return { message: 'Database Error: Failed to Update Skill.' };
   }
  
-  revalidatePath('/admin/skill');
-  redirect('/admin/skill');
+  revalidatePath('/admin/skills');
+  redirect('/admin/skills');
 }
 
 
@@ -125,7 +132,7 @@ export async function deleteSkill(id: string) {
 
   try {
     await sql`DELETE FROM skills WHERE id = ${id}`;
-    revalidatePath('/admin/skill');
+    revalidatePath('/admin/skills');
     return { message: 'Deleted Skill.' };
   } catch (error) {
     return { message: 'Database Error: Failed to Delete Skill.' };
@@ -195,8 +202,8 @@ export async function createProject(prevState: ProjectState, formData: FormData)
     };
   }
 
-  revalidatePath('/admin/project');
-  redirect('/admin/project');
+  revalidatePath('/admin/projects');
+  redirect('/admin/projects');
 }
 
 
@@ -231,8 +238,8 @@ export async function updateProject(
     return { message: 'Database Error: Failed to Update Project.' };
   }
  
-  revalidatePath('/admin/project');
-  redirect('/admin/project');
+  revalidatePath('/admin/projects');
+  redirect('/admin/projects');
 }
 
 

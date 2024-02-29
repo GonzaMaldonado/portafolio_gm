@@ -7,7 +7,6 @@ export const metadata: Metadata = {
 
 import Table from '@/app/ui/skills/table';
 import { CreateSkill } from '@/app/ui/skills/buttons';
-import { lusitana } from '@/app/ui/fonts';
 import { SkillsTableSkeleton } from '@/app/ui/skeletons';
 import { Suspense } from 'react';
  

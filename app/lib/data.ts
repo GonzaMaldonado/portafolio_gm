@@ -1,5 +1,5 @@
 import { sql } from '@vercel/postgres';
-import { User, Skill, Project } from './definitions';
+import { Skill, Project } from './definitions';
 import { unstable_noStore as noStore } from 'next/cache';
 
 
@@ -44,6 +44,22 @@ export async function fetchSkills() {
     throw new Error('Failed to fetch skills.');
   }
 }
+
+export async function fetchSkillById(id: string) {
+  noStore();
+
+  try {
+    const data = await sql<Skill>`
+      SELECT * FROM skills WHERE id = ${id};
+    `;
+
+    return data.rows[0];
+  } catch (error) {
+    console.error('Database Error:', error);
+    throw new Error('Failed to fetch skill.');
+  }
+}
+
 /* 
 export async function fetchInvoicesPages(query: string) {
   noStore();

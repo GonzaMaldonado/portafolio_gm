@@ -20,11 +20,11 @@ export default async function SkillsTable() {
                     <div className="mb-2 flex items-center">
                       <Image
                         src={skill.image_url}
-                        className="mr-2 rounded-full"
-                        width={28}
-                        height={28}
-                        alt={`${skill.name}'s profile picture`}
-                      />
+                        width={10}
+                        height={10}
+                        className="w-10 h-10 mr-2 rounded-full"
+                        alt={`${skill.name} picture`}
+                        />
                       <p>{skill.name}</p>
                     </div>
                   </div>
@@ -46,18 +46,13 @@ export default async function SkillsTable() {
             <thead className="rounded-lg text-left text-sm font-normal">
               <tr>
                 <th scope="col" className="px-4 py-5 font-medium sm:pl-6">
-                  Id
+                  Image
                 </th>
                 <th scope="col" className="px-3 py-5 font-medium">
                   Name
                 </th>
-                <th scope="col" className="px-3 py-5 font-medium">
-                  Image Url
-                </th>
-               
-                
-                <th scope="col" className="relative py-3 pl-6 pr-3">
-                  <span className="sr-only">Edit</span>
+                <th scope="col" className="flex align-center justify-end py-4 pr-10">
+                  <span>Edit</span>
                 </th>
               </tr>
             </thead>
@@ -69,19 +64,18 @@ export default async function SkillsTable() {
                 >
                   <td className="whitespace-nowrap py-3 pl-6 pr-3">
                     <div className="flex items-center gap-3">
+
                       <Image
                         src={skill.image_url}
-                        className="rounded-full"
-                        width={28}
-                        height={28}
-                        alt={`${skill.name}'s profile picture`}
-                      />
-                      <p>{skill.name}</p>
+                        width={50}
+                        height={50}
+                        className="object-cover rounded-full"
+                        alt={`${skill.name} picture`}
+                        />
                     </div>
                   </td>
                   <td className="whitespace-nowrap px-3 py-3">
-                  </td>
-                  <td className="whitespace-nowrap px-3 py-3">
+                    <p>{skill.name}</p>
                   </td>
                   <td className="whitespace-nowrap py-3 pl-6 pr-3">
                     <div className="flex justify-end gap-3">
