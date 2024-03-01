@@ -29,13 +29,11 @@ export default async function SkillsTable() {
                       <p>{skill.order_num}</p>
                     </div>
                   </div>
+                  
                 </div>
-                <div className="flex w-full items-center justify-between pt-4">
-                  <div>
-                    <p className="text-xl font-medium">
-                    </p>
-                  </div>
-                  <div className="flex justify-end gap-2">
+                <div className="flex w-full items-center pt-4">
+
+                  <div className="flex justify-end gap-1">
                     <UpdateSkill id={skill.id} />
                     <DeleteSkill id={skill.id} />
                   </div>

@@ -8,7 +8,7 @@ import { createSkill } from '@/app/lib/actions';
 export default function Form() {
   const initialState = { message: "", errors: {}};
   const [state, dispatch] = useFormState(createSkill, initialState);
-  console.log(state, "Dispatch", dispatch);
+  console.log(state);
   
  
   return (

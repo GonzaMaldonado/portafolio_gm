@@ -17,7 +17,7 @@ const navigation = [
 export default function Header() {
   
   return (
-    <Disclosure as="nav" id="home" className="bg-gray-800 sticky top-0 right-0">
+    <Disclosure as="nav" id="home" className="bg-gray-800 sticky top-0 right-0 z-50">
       {({ open }) => (
         <>
           <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">

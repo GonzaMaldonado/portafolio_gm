@@ -6,29 +6,12 @@ import Perfil from "@/public/perfil.jpg";
 //import Proyecto from '@/public/next.svg'
 //import Ecommerce from '@/public/next.svg'
 //import Github from '@/public/next.svg'
+import { fetchSkills } from '@/app/lib/data'; // Componente
 
 
-const Home = () => {
 
-  /* const { data, isLoading, error } = useQuery({
-    queryKey: ['skills'],
-    queryFn: skillsRequest,
-  });
-
-  
-  let listSkills
-  if (data) {
-    listSkills = data.map(skill => 
-      <div key={skill.id} className="mx-auto justify-center items-center">
-        <div className="h-16 lg:h-20 w-16 lg:w-20 rounded-2xl mx-auto">
-          <img className="h-full w-full object-cover rounded-3xl bg-slate-700" src={`${baseURL}${skill.image}`} alt={skill.name} />
-        </div>
-        <p className='text-center text-white font-bold'>{skill.name}</p>
-      </div>
-    )
-  } */
-
-  
+const Home = async () => {
+  const skills = await fetchSkills() // Componente
 
   return (
     <main className='font-mono text-white p-4 md:p-5'>
@@ -191,15 +174,26 @@ const Home = () => {
 
       <h5 className="text-sm font-bold uppercase text-center mt-32 sm:text-xl lg:text-2xl" id="skills">Lenguajes - Frameworks - Herramientas</h5>
       
-      {/* {error ? ( 
-        <p className='font-bold text-center text-yellow-400'>No se cargaron Skills</p> 
-      ) : (
-        <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-5 gap-x-4 lg:gap-x-0 gap-y-8 my-20">
-    
-          {listSkills}
+      {/* Componente */}
+      <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-5 gap-x-4 lg:gap-x-0 gap-y-8 my-20">
 
-        </div>
-      )} */}
+        {skills?.map(skill => 
+          <div key={skill.id} className="mx-auto justify-center items-center">
+            <div className="h-16 lg:h-20 w-16 lg:w-20 rounded-2xl mx-auto">
+              <Image
+                src={skill.image_url}
+                width={50}
+                height={50}
+                alt={`Imagen de ${skill.name}`}
+                className="h-full w-full object-cover rounded-3xl bg-slate-700"
+              />
+            </div>
+            <p className='text-center text-white font-bold'>{skill.name}</p>
+          </div>
+        )}
+      </div>
+
+      {/* {error <p className='font-bold text-center text-yellow-400'>No se cargaron Skills</p> */}
          
     </main>
   )
