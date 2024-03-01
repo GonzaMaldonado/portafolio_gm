@@ -26,7 +26,7 @@ export default async function SkillsTable() {
                         alt={`${skill.name} picture`}
                         />
                       <p>{skill.name}</p>
-                      <p>{skill.order}</p>
+                      <p>{skill.order_num}</p>
                     </div>
                   </div>
                 </div>
@@ -82,7 +82,7 @@ export default async function SkillsTable() {
                     <p>{skill.name}</p>
                   </td>
                   <td className="whitespace-nowrap px-3 py-3">
-                    <p>{skill.order}</p>
+                    <p>{skill.order_num}</p>
                   </td>
                   <td className="whitespace-nowrap py-3 pl-6 pr-3">
                     <div className="flex justify-end gap-3">
