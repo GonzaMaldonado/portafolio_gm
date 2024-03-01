@@ -1,5 +1,5 @@
 import Form from '@/app/ui/skills/edit-form';
-//import Breadcrumbs from '@/app/ui/invoices/breadcrumbs';
+import Breadcrumbs from '@/app/ui/skills/breadcrumbs';
 import { fetchSkillById } from '@/app/lib/data';
 import { notFound } from 'next/navigation';
  
@@ -15,16 +15,16 @@ export default async function Page({ params }: { params: { id: string } }) {
 
   return (
     <main>
-      {/* <Breadcrumbs
+      <Breadcrumbs
         breadcrumbs={[
-          { label: 'Invoices', href: '/dashboard/invoices' },
+          { label: 'Skills', href: '/admin/skills' },
           {
-            label: 'Edit Invoice',
-            href: `/dashboard/invoices/${id}/edit`,
+            label: 'Edit Skill',
+            href: `/admin/skills/${id}/edit`,
             active: true,
           },
         ]}
-      /> */}
+      />
       <Form skill={skill} />
     </main>
   );

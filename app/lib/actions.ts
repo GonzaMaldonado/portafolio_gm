@@ -33,10 +33,12 @@ export async function authenticate(
 // Skills
 const FormSchemaSkill = z.object({
   id: z.string(),
-  name: z.string(),
-  image_url: z.string(
-    {invalid_type_error: 'Please select a image_url.',}
-  ),
+  name: z.string({
+    invalid_type_error: 'Please select a name.',
+  }),
+  image_url: z.string({
+    invalid_type_error: 'Please select a image_url.',
+  }),
   order_num: z.coerce.number()
     .gt(0, { message: 'Please enter an number greater than 0.' }),
 });

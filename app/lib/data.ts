@@ -36,7 +36,7 @@ export async function fetchSkills() {
   try {
     const skills = await sql<Skill>`
       SELECT id, name, image_url FROM skills  
-    `;
+    `;    
 
     return skills.rows;
   } catch (error) {
