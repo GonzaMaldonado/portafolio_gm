@@ -13,7 +13,7 @@ export type Skill = {
   id: string;
   name: string;
   image_url: string;
-  order: number;
+  order_num: number;
 };
 
 export type Project = {
@@ -22,7 +22,7 @@ export type Project = {
   image_url: string;
   description?: string;
   items: string;
-  order: number;
+  order_num: number;
 };
 
 

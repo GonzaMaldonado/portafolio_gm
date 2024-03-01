@@ -37,16 +37,8 @@ const FormSchemaSkill = z.object({
   image_url: z.string(
     {invalid_type_error: 'Please select a image_url.',}
   ),
-});
-const SkillFormSchema = z.object({
-  id: z.string(),
-  name: z.string(
-    {invalid_type_error: 'Please select a name.',
-    required_error: "Write a name"}
-  ),
-  image_url: z.string(
-    {invalid_type_error: 'Please select a image_url.',}
-  ),
+  order_num: z.coerce.number()
+    .gt(0, { message: 'Please enter an number greater than 0.' }),
 });
 
 
@@ -54,19 +46,21 @@ export type SkillState = {
   errors?: {
     name?: string[];
     image_url?: string[];
+    order_num?: string[];
   };
   message?: null | string;
 };
 
 
 const CreateSkill = FormSchemaSkill.omit({ id: true });
-const UpdateSkill = SkillFormSchema.omit({ id: true });
+const UpdateSkill = FormSchemaSkill.omit({ id: true });
 
 
 export async function createSkill(prevState: SkillState, formData: FormData) {
   const validatedFields = CreateSkill.safeParse({
     name: formData.get('name'),
     image_url: formData.get('image_url'),
+    order_num: formData.get('order_num')
   });
 
   if (!validatedFields.success) {
@@ -76,12 +70,12 @@ export async function createSkill(prevState: SkillState, formData: FormData) {
     };
   }
 
-  const { name, image_url } = validatedFields.data;
+  const { name, image_url, order_num } = validatedFields.data;
 
   try {
     await sql`
-      INSERT INTO skills (name, image_url)
-      VALUES (${name}, ${image_url})
+      INSERT INTO skills (name, image_url, order_num)
+      VALUES (${name}, ${image_url}, ${order_num})
     `;
   } catch (error) {
     return {
@@ -102,6 +96,7 @@ export async function updateSkill(
   const validatedFields = UpdateSkill.safeParse({
     name: formData.get('name'),
     image_url: formData.get('image_url'),
+    order_num: formData.get('order_num')
   });
  
   if (!validatedFields.success) {
@@ -111,12 +106,12 @@ export async function updateSkill(
     };
   }
  
-  const { name, image_url } = validatedFields.data;
+  const { name, image_url, order_num } = validatedFields.data;
  
   try {
     await sql`
       UPDATE skills
-      SET name = ${name}, image_url = ${image_url}
+      SET name = ${name}, image_url = ${image_url}, order_num = ${order_num}
       WHERE id = ${id}
     `;
   } catch (error) {
@@ -141,7 +136,7 @@ export async function deleteSkill(id: string) {
 
 
 // Projects
-const ProjectFormSchema = z.object({
+const FormSchemaProject = z.object({
   id: z.string(),
   name: z.string(
     {invalid_type_error: 'Please select a name.',}
@@ -155,6 +150,8 @@ const ProjectFormSchema = z.object({
   items: z.string(
     {invalid_type_error: 'Please select items.',}
   ),
+  order_num: z.coerce.number()
+    .gt(0, { message: 'Please enter an number greater than 0.' }),
 });
 
 
@@ -165,13 +162,14 @@ export type ProjectState = {
     image_url?: string[];
     description?: string[];
     items?: string[];
+    order_num?: string[];
   };
   message?: string | null;
 };
 
 
-const CreateProject = ProjectFormSchema.omit({ id: true });
-const UpdateProject = ProjectFormSchema.omit({ id: true });
+const CreateProject = FormSchemaProject.omit({ id: true });
+const UpdateProject = FormSchemaProject.omit({ id: true });
 
 
 export async function createProject(prevState: ProjectState, formData: FormData) {
@@ -180,6 +178,7 @@ export async function createProject(prevState: ProjectState, formData: FormData)
     image_url: formData.get('image_url'),
     description: formData.get('description'),
     items: formData.get('items'),
+    order_num: formData.get('order_num')
   });
 
   if (!validatedFields.success) {
@@ -189,12 +188,12 @@ export async function createProject(prevState: ProjectState, formData: FormData)
     };
   }
 
-  const { name, image_url, description, items } = validatedFields.data;
+  const { name, image_url, description, items, order_num } = validatedFields.data;
 
   try {
     await sql`
-      INSERT INTO projects (name, image_url, description, items)
-      VALUES (${name}, ${image_url}, ${description}, ${items})
+      INSERT INTO projects (name, image_url, description, items, order_num)
+      VALUES (${name}, ${image_url}, ${description}, ${items}, ${order_num})
     `;
   } catch (error) {
     return {
@@ -217,6 +216,7 @@ export async function updateProject(
     image_url: formData.get('image_url'),
     description: formData.get('description'),
     items: formData.get('items'),
+    order_num: formData.get('order_num')
   });
  
   if (!validatedFields.success) {
@@ -226,12 +226,12 @@ export async function updateProject(
     };
   }
  
-  const { name, image_url, description, items } = validatedFields.data;
+  const { name, image_url, description, items, order_num } = validatedFields.data;
  
   try {
     await sql`
       UPDATE projects
-      SET name = ${name}, image_url = ${image_url}, description = ${description}, items = ${items}
+      SET name = ${name}, image_url = ${image_url}, description = ${description}, items = ${items}, order_num = ${order_num}
       WHERE id = ${id}
     `;
   } catch (error) {
@@ -247,7 +247,7 @@ export async function deleteProject(id: string) {
 
   try {
     await sql`DELETE FROM projects WHERE id = ${id}`;
-    revalidatePath('/admin/project');
+    revalidatePath('/admin/projects');
     return { message: 'Deleted Project.' };
   } catch (error) {
     return { message: 'Database Error: Failed to Delete Project.' };

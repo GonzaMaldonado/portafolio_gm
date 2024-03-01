@@ -26,6 +26,7 @@ export default async function SkillsTable() {
                         alt={`${skill.name} picture`}
                         />
                       <p>{skill.name}</p>
+                      <p>{skill.order}</p>
                     </div>
                   </div>
                 </div>
@@ -50,6 +51,9 @@ export default async function SkillsTable() {
                 </th>
                 <th scope="col" className="px-3 py-5 font-medium">
                   Name
+                </th>
+                <th scope="col" className="px-3 py-5 font-medium">
+                  Order
                 </th>
                 <th scope="col" className="flex align-center justify-end py-4 pr-10">
                   <span>Edit</span>
@@ -76,6 +80,9 @@ export default async function SkillsTable() {
                   </td>
                   <td className="whitespace-nowrap px-3 py-3">
                     <p>{skill.name}</p>
+                  </td>
+                  <td className="whitespace-nowrap px-3 py-3">
+                    <p>{skill.order}</p>
                   </td>
                   <td className="whitespace-nowrap py-3 pl-6 pr-3">
                     <div className="flex justify-end gap-3">
