@@ -1,17 +1,11 @@
 import Image from "next/image";
-
-//import { useQuery } from '@tanstack/react-query'
-//import { skillsRequest } from '../api/home'
+import SkillsTable from "@/app/ui/skills/table";
 import Perfil from "@/public/perfil.jpg";
-//import Proyecto from '@/public/next.svg'
-//import Ecommerce from '@/public/next.svg'
-//import Github from '@/public/next.svg'
-import { fetchSkills } from '@/app/lib/data'; // Componente
+import { SkillsSkeleton } from "@/app/ui/skeletons";
+import { Suspense } from "react";
 
 
-
-const Home = async () => {
-  const skills = await fetchSkills() // Componente
+const Home = () => {
 
   return (
     <main className='font-mono text-white p-4 md:p-5'>
@@ -174,23 +168,10 @@ const Home = async () => {
 
       <h5 className="text-sm font-bold uppercase text-center mt-32 sm:text-xl lg:text-2xl" id="skills">Lenguajes - Frameworks - Herramientas</h5>
       
-      {/* Componente */}
       <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-5 gap-x-4 lg:gap-x-0 gap-y-8 my-20">
-
-        {skills?.map(skill => 
-          <div key={skill.id} className="mx-auto justify-center items-center">
-            <div className="h-16 lg:h-20 w-16 lg:w-20 rounded-2xl mx-auto">
-              <Image
-                src={skill.image_url}
-                width={50}
-                height={50}
-                alt={`Imagen de ${skill.name}`}
-                className="h-full w-full object-cover rounded-3xl bg-slate-700"
-              />
-            </div>
-            <p className='text-center text-white font-bold'>{skill.name}</p>
-          </div>
-        )}
+        <Suspense  fallback={<SkillsSkeleton />}>
+          <SkillsTable />
+        </Suspense>
       </div>
 
       {/* {error <p className='font-bold text-center text-yellow-400'>No se cargaron Skills</p> */}

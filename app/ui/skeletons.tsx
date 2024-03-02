@@ -2,29 +2,26 @@
 const shimmer =
   'before:absolute before:inset-0 before:-translate-x-full before:animate-[shimmer_2s_infinite] before:bg-gradient-to-r before:from-transparent before:via-white/60 before:to-transparent';
 
-export function CardSkeleton() {
+export function SkillSkeleton() {
   return (
     <div
-      className={`${shimmer} relative overflow-hidden rounded-xl bg-gray-100 p-2 shadow-sm`}
+      className={`${shimmer} relative overflow-hidden rounded-xl  p-2 shadow-sm flex flex-col justify-center items-center`}
     >
-      <div className="flex p-4">
-        <div className="h-5 w-5 rounded-md bg-gray-200" />
-        <div className="ml-2 h-6 w-16 rounded-md bg-gray-200 text-sm font-medium" />
-      </div>
-      <div className="flex items-center justify-center truncate rounded-xl bg-white px-4 py-8">
-        <div className="h-7 w-20 rounded-md bg-gray-200" />
-      </div>
+        <div className="h-16 w-16 rounded-2xl my-2 bg-gray-200" />
+        <div className="h-5 w-14 rounded-md bg-gray-200 text-sm font-medium" />
+      
     </div>
   );
 }
 
-export function CardsSkeleton() {
+export function SkillsSkeleton() {
   return (
     <>
-      <CardSkeleton />
-      <CardSkeleton />
-      <CardSkeleton />
-      <CardSkeleton />
+      <SkillSkeleton />
+      <SkillSkeleton />
+      <SkillSkeleton />
+      <SkillSkeleton />
+      <SkillSkeleton />
     </>
   );
 }
@@ -82,26 +79,6 @@ export function LatestInvoicesSkeleton() {
   );
 }
 
-export default function DashboardSkeleton() {
-  return (
-    <>
-      <div
-        className={`${shimmer} relative mb-4 h-8 w-36 overflow-hidden rounded-md bg-gray-100`}
-      />
-      <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-        <CardSkeleton />
-        <CardSkeleton />
-        <CardSkeleton />
-        <CardSkeleton />
-      </div>
-      <div className="mt-6 grid grid-cols-1 gap-6 md:grid-cols-4 lg:grid-cols-8">
-        <RevenueChartSkeleton />
-        <LatestInvoicesSkeleton />
-      </div>
-    </>
-  );
-}
-
 export function TableRowSkeleton() {
   return (
     <tr className="w-full border-b border-gray-100 last-of-type:border-none [&:first-child>td:first-child]:rounded-tl-lg [&:first-child>td:last-child]:rounded-tr-lg [&:last-child>td:first-child]:rounded-bl-lg [&:last-child>td:last-child]:rounded-br-lg">
@@ -139,7 +116,7 @@ export function TableRowSkeleton() {
   );
 }
 
-export function InvoicesMobileSkeleton() {
+export function MobileSkeleton() {
   return (
     <div className="mb-2 w-full rounded-md bg-white p-4">
       <div className="flex items-center justify-between border-b border-gray-100 pb-8">
@@ -163,36 +140,29 @@ export function InvoicesMobileSkeleton() {
   );
 }
 
-export function SkillsTableSkeleton() {
+export function TableSkeleton() {
   return (
     <div className="mt-6 flow-root">
       <div className="inline-block min-w-full align-middle">
         <div className="rounded-lg bg-gray-50 p-2 md:pt-0">
           <div className="md:hidden">
-            <InvoicesMobileSkeleton />
-            <InvoicesMobileSkeleton />
-            <InvoicesMobileSkeleton />
-            <InvoicesMobileSkeleton />
-            <InvoicesMobileSkeleton />
-            <InvoicesMobileSkeleton />
+            <MobileSkeleton />
+            <MobileSkeleton />
+            <MobileSkeleton />
+            <MobileSkeleton />
+            <MobileSkeleton />
           </div>
           <table className="hidden min-w-full text-gray-900 md:table">
             <thead className="rounded-lg text-left text-sm font-normal">
               <tr>
                 <th scope="col" className="px-4 py-5 font-medium sm:pl-6">
-                  Customer
+                  Image
                 </th>
                 <th scope="col" className="px-3 py-5 font-medium">
-                  Email
+                  Name
                 </th>
                 <th scope="col" className="px-3 py-5 font-medium">
-                  Amount
-                </th>
-                <th scope="col" className="px-3 py-5 font-medium">
-                  Date
-                </th>
-                <th scope="col" className="px-3 py-5 font-medium">
-                  Status
+                  Order
                 </th>
                 <th
                   scope="col"
@@ -216,3 +186,4 @@ export function SkillsTableSkeleton() {
     </div>
   );
 }
+

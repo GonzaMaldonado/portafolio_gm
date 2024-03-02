@@ -1,15 +1,15 @@
-import Form from '@/app/ui/skills/edit-form';
+import Form from '@/app/ui/projects/edit-form';
 import Breadcrumbs from '@/app/ui/admin/breadcrumbs';
-import { fetchSkillById } from '@/app/lib/data';
+import { fetchProjectById } from '@/app/lib/data';
 import { notFound } from 'next/navigation';
  
 export default async function Page({ params }: { params: { id: string } }) {
   const id = params.id;
-  const [skill] = await Promise.all([
-    fetchSkillById(id),
+  const [project] = await Promise.all([
+    fetchProjectById(id),
   ]);
 
-  if (!skill) {
+  if (!project) {
     notFound();
   }
 
@@ -17,15 +17,15 @@ export default async function Page({ params }: { params: { id: string } }) {
     <main>
       <Breadcrumbs
         breadcrumbs={[
-          { label: 'Skills', href: '/admin/skills' },
+          { label: 'Projects', href: '/admin/projects' },
           {
-            label: 'Edit Skill',
-            href: `/admin/skills/${id}/edit`,
+            label: 'Edit Project',
+            href: `/admin/projects/${id}/edit`,
             active: true,
           },
         ]}
       />
-      <Form skill={skill} />
+      <Form project={project} />
     </main>
   );
 }

@@ -1,4 +1,4 @@
-import Form from '@/app/ui/skills/create-form';
+import Form from '@/app/ui/projects/create-form';
 import Breadcrumbs from '@/app/ui/admin/breadcrumbs';
  
 export default async function Page() {
@@ -7,10 +7,10 @@ export default async function Page() {
     <main>
       <Breadcrumbs
         breadcrumbs={[
-          { label: 'Skills', href: '/admin/skills' },
+          { label: 'Projects', href: '/admin/projects' },
           {
-            label: 'Create Skill',
-            href: '/admin/skills/create',
+            label: 'Create Project',
+            href: '/admin/projects/create',
             active: true,
           },
         ]}

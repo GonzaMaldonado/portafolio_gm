@@ -32,10 +32,10 @@ export async function fetchCardData() {
 export async function fetchSkills() {
   noStore();
 
-
   try {
+    await new Promise((resolve) => setTimeout(resolve, 3000));
     const skills = await sql<Skill>`
-      SELECT id, name, image_url FROM skills  
+      SELECT * FROM skills  
     `;    
 
     return skills.rows;
@@ -57,6 +57,37 @@ export async function fetchSkillById(id: string) {
   } catch (error) {
     console.error('Database Error:', error);
     throw new Error('Failed to fetch skill.');
+  }
+}
+
+
+export async function fetchProjects() {
+  noStore();
+
+  try {
+    const projects = await sql<Project>`
+      SELECT * FROM projects  
+    `;    
+
+    return projects.rows;
+  } catch (error) {
+    console.error('Database Error:', error);
+    throw new Error('Failed to fetch projects.');
+  }
+}
+
+export async function fetchProjectById(id: string) {
+  noStore();
+
+  try {
+    const data = await sql<Project>`
+      SELECT * FROM projects WHERE id = ${id};
+    `;
+
+    return data.rows[0];
+  } catch (error) {
+    console.error('Database Error:', error);
+    throw new Error('Failed to fetch project.');
   }
 }
 
