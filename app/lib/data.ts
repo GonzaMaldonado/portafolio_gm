@@ -65,6 +65,7 @@ export async function fetchProjects() {
   noStore();
 
   try {
+    await new Promise((resolve) => setTimeout(resolve, 4000));
     const projects = await sql<Project>`
       SELECT * FROM projects  
     `;    
